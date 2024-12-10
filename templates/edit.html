@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body %}
+
+
+    <section id="selection" class="selection section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Update Your Details</h2>
+            </div>
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <input type="text" name="name" value="{{ x.name }}" class="form-control" id="name"
+                               placeholder="Your Name" required>
+                    </div>
+                    <div class="col-md-4 form-group mt-3 mt-md-0">
+                        <input type="tel" class="form-control" value="{{ x.phone }}" name="phone" id="phone"
+                               placeholder="Your Phone" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 form-group mt-3">
+                        <input type="date" name="date" value="{{ x.date }}" class="form-control datepicker" id="date"
+                               placeholder="Appointment Date" required>
+                    </div>
+                    <div class="col-md-4 form-group mt-3">
+                        <select name="type" id="type" aria-invalid="{{ x.type }}" class="form-select">
+                            <option value="">Select your preferred Type</option>
+                            <option value="type 1">Road bikes</option>
+                            <option value="type 2">Electric</option>
+                            <option value="type 3">Kids bikes</option>
+                        </select>
+                    </div>
+                                  </div>
+
+                <div class="my-3">
+                    <div class="loading">Loading</div>
+                    <div class="error-message"></div>
+                    <div class="sent-message">Your request has been sent successfully. Thank you!</div>
+                </div>
+                <div class="text-center">
+                    <button type="submit">Submit</button>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">UPDATE</button>
+                </div>
+
+            </form>
+
+        </div>
+    </section><!-- End Appointment Section -->
+
+
+
+
+
+
+{% endblock %}

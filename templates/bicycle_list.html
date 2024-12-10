@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+    <h1 class="mt-5">Bicycle List</h1>
+    <div class="row">
+        {% for bicycle in bicycles %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ bicycle.image.url }}" class="card-img-top" alt="{{ bicycle.bicycle_name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ bicycle.bicycle_name }}</h5>
+                    <p class="card-text">{{ bicycle.time_taken }}</p>
+                    <p>Price: KES {{ bicycle.price }}</p>
+                    <p>Owner: {{ bicycle.owner_name }}</p>
+
+                    <!-- Pay button -->
+                    <a href="{% url 'pay' %}" class="btn btn-success mb-2">Pay</a>
+                    <!-- Delete button with reduced size -->
+                    <a href="/delete/{{ bicycle.id }}" class="btn btn-danger btn-sm">DELETE</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No bicycles available.</p>
+        {% endfor %}
+    </div>
+    </div>
+{% endblock %}
